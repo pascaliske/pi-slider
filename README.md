@@ -1,5 +1,7 @@
 # pi-slider
 
+*__Note:__ I'll upload all files and folders in the next days!*
+
 The _pi-slider_ is a very simple image slider build with jQuery. See the steps below for the installation. There are also several options to customize slider. See also my [Demo](http://dev.pascal-iske.de/demos/pi-slider/) of the slider.
 
 
