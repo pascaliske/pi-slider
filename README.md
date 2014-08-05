@@ -11,26 +11,26 @@ The pi-slider is a very simple image slider build with jQuery. It is easy to ins
 
 - Include the CSS-Stylesheet file  and the JavaScript file of the pi-slider in the header of your HTML-file:
 ```html
-	<link rel="stylesheet" type="text/css" href="pi-slider/pi-slider.css">
-	<script type="text/javascript" src="pi-slider/pi-slider.js"></script>
+<link rel="stylesheet" type="text/css" href="pi-slider/pi-slider.css">
+<script type="text/javascript" src="pi-slider/pi-slider.js"></script>
 ```
 
 - We prepare a simple HTML element (such as a `div` tag) with an id `#sample`:
 ```html
-	<div id="slider">
-		<img src="image1.png" title="Caption here (optional)" data-href="Link here (optional)" />
-		<img src="image2.png" title="Caption here (optional)" data-href="Link here (optional)" />
-		<img src="image3.png" title="Caption here (optional)" data-href="Link here (optional)" />
-	</div>
+<div id="slider">
+	<img src="image1.png" title="Caption here (optional)" data-href="Link here (optional)" />
+	<img src="image2.png" title="Caption here (optional)" data-href="Link here (optional)" />
+	<img src="image3.png" title="Caption here (optional)" data-href="Link here (optional)" />
+</div>
 ```
 The slider include itself in this `div` element. You also can style this element with your own css.
 
 - Insert the following javascript at the bottom just before the closing body tag and replace **#slider** with the id of the element you've prepared in the previous step. (This calls the main function of the slider)
 ```javascript
-	$(document).ready(function() {
-		$("#slider").piSlider({
-			progressColor: '#f0f0f0'
-		});
+$(document).ready(function() {
+	$("#slider").piSlider({
+		progressColor: '#f0f0f0'
+	});
 });
 ```
 >Don't forget the `<style>` tag around the javascript code! ;)
@@ -39,37 +39,40 @@ The slider include itself in this `div` element. You also can style this element
 
 The pi-slider has several options to change its appearance and behavior. This options are listed below with a short description.
 ```javascript
-	// displays a loading graphic before the slider fades in
-	loader: true,
-	// start image
-	startImage: 1,
-	// autoplay or manual slides with arrows
-	autoplay: true,
-	// continuous play of slides
-	loop: true,
-	// play direction
-	backwards: false,
-	// which effect to blend content
-	effect: 'fade',
-	// duration of  each slide
-	duration: '8000',
-	// pause on hover
-	pauseOnHover: false,
-	// displays a shadow below the slider
-	shadow: true,
-	// enables/disables fullsize view of the slider
-	fullsize: false,
-	// sets progressbar color (word or hex code)
-	progressColor: 'grey',
-	// shows/hides the progressbar
-	progressBar: true,
-	// sets the position of the progressbar (top or bottom)
-	progressPosition: 'bottom',
-	// shows/hides control arrows
-	arrows: true,
-	// shows/hides captions
-	captions: true
+// displays a loading graphic before the slider fades in
+loader: true,
+// start image
+startImage: 1,
+// autoplay or manual slides with arrows
+autoplay: true,
+// continuous play of slides
+loop: true,
+// play direction
+backwards: false,
+// which effect to blend content
+effect: 'fade',
+// duration of  each slide
+duration: '8000',
+// pause on hover
+pauseOnHover: false,
+// displays a shadow below the slider
+shadow: true,
+// enables/disables fullsize view of the slider
+fullsize: false,
+// sets progressbar color (word or hex code)
+progressColor: 'grey',
+// shows/hides the progressbar
+progressBar: true,
+// sets the position of the progressbar (top or bottom)
+progressPosition: 'bottom',
+// shows/hides control arrows
+arrows: true,
+// shows/hides captions
+captions: true
 ```
 
 ## Contact
-If you have questions or suggestions you can contact me with this _email_: `info@pascal-iske.de`
+If you have questions, suggestions or feature requests you can write a pull request or you can contact me with this _email_: [info@pascal-iske.de](mailto:info@pascal-iske.de).
+
+## License
+This jQuery plugin is made with lots of love and it is free of charge and you can use it on your website. You also can fork this so that you can make changes. In general I would like to see my name in the credits. Thank you!
