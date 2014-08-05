@@ -1,13 +1,13 @@
 # pi-slider
 
-The pi-slider is a very simple image slider build with jQuery. It is easy to install. See the steps below for the installation. There are several options to customize slider.
+The _pi-slider_ is a very simple image slider build with jQuery. It is easy to install. See the steps below for the installation. There are several options to customize slider.
 
 
 ## Installation
 
 - First we download and unzip the [plugin]()
 
-- We include the latest version of jQuery (see [Google Developers](https://developers.google.com/speed/libraries/devguide#jquery))
+- We include the latest version of jQuery (see [Google Developers](https://developers.google.com/speed/libraries/devguide#jquery) for cdn-version)
 
 - Include the CSS-Stylesheet file  and the JavaScript file of the pi-slider in the header of your HTML-file:
 ```html
@@ -23,9 +23,9 @@ The pi-slider is a very simple image slider build with jQuery. It is easy to ins
 	<img src="image3.png" title="Caption here (optional)" data-href="Link here (optional)" />
 </div>
 ```
-The slider include itself in this `div` element. You also can style this element with your own css.
+>The _pi-slider_ include itself in the prepared `div` element. You also can style this element with your own css.
 
-- Insert the following javascript at the bottom just before the closing body tag and replace **#slider** with the id of the element you've prepared in the previous step. (This calls the main function of the slider)
+- Include the following Javascript and replace **#slider** with the id of the element you've prepared in the previous step. (This calls the main function of the slider)
 ```javascript
 $(document).ready(function() {
 	$("#slider").piSlider({
@@ -33,11 +33,12 @@ $(document).ready(function() {
 	});
 });
 ```
->Don't forget the `<style>` tag around the javascript code! ;)
+I recommend it to include this Javascript code at the bottom of the file just before the closing body tag because of performance reasons.
+>Don't forget the `<style>` tag around the Javascript code! ;)
 
 ## Configuration
 
-The pi-slider has several options to change its appearance and behavior. This options are listed below with a short description.
+The _pi-slider_ has several options to change its appearance and behavior. This options are listed below with a short description.
 ```javascript
 // displays a loading graphic before the slider fades in
 loader: true,
@@ -72,7 +73,7 @@ captions: true
 ```
 
 ## Contact
-If you have questions, suggestions or feature requests you can write a pull request or you can contact me with this _email_: [info@pascal-iske.de](mailto:info@pascal-iske.de).
+If you have questions, suggestions or feature requests you can write a pull request or you can contact me with this **Email**: [info@pascal-iske.de](mailto:info@pascal-iske.de).
 
 ## License
-This jQuery plugin is made with lots of love and it is free of charge and you can use it on your website. You also can fork this so that you can make changes. In general I would like to see my name in the credits. Thank you!
+This jQuery plugin is made with lots of love and its free of charge so you can use it on your website. Please fork this repo for your own changes. In general I would like to see my name in the credits. Thank you!
