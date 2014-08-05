@@ -38,38 +38,49 @@ I recommend it to include this Javascript code at the bottom of the file just be
 
 ## Configuration
 
-The _pi-slider_ has several options to change its appearance and behavior. This options are listed below with a short description.
+The _pi-slider_ has several options to change its appearance and behavior. This options are listed below with a short description. Between the `{braces}` are the possible values for the options
 ```javascript
-// displays a loading graphic before the slider fades in
-loader: true,
-// start image
+// displays a loading graphic before the slider fades in {true, false}
+loader: true, 
+// start image {number_of_image}
 startImage: 1,
-// autoplay or manual slides with arrows
+// autoplay or manual slides with arrows {true, false}
 autoplay: true,
-// continuous play of slides
+// continuous play of slides {true, false}
 loop: true,
-// play direction
+// play direction {true, false}
 backwards: false,
-// which effect to blend content
+// which effect to blend content {fade, slide}
 effect: 'fade',
-// duration of  each slide
+// duration of  each slide {time_in_ms}
 duration: '8000',
-// pause on hover
+// pause on hover {true, false}
 pauseOnHover: false,
-// displays a shadow below the slider
+// displays a shadow below the slider {true, false}
 shadow: true,
-// enables/disables fullsize view of the slider
+// enables/disables fullsize view of the slider {true, false}
 fullsize: false,
-// sets progressbar color (word or hex code)
+// sets progressbar color {color_word, hex_code}
 progressColor: 'grey',
-// shows/hides the progressbar
+// shows/hides the progressbar {true, false}
 progressBar: true,
-// sets the position of the progressbar (top or bottom)
+// sets the position of the progressbar {top, bottom}
 progressPosition: 'bottom',
-// shows/hides control arrows
+// shows/hides control arrows {true, false}
 arrows: true,
-// shows/hides captions
+// shows/hides captions {true, false}
 captions: true
+```
+You have to copy the options into the JavaScript code from the last step of the [Installation](#installation). For every option write a new line
+```javascript
+$(document).ready(function() {
+	$("#slider").piSlider({
+		option_name: value,
+		option_name: value,
+		option_name: value,
+		...
+	});
+});
 ```
 
 ## Contact
