@@ -5,9 +5,9 @@ The _pi-slider_ is a very simple image slider build with jQuery. It is easy to i
 
 ## Installation
 
-- First we download and unzip the [plugin](https://github.com/pascaliske/pi-slider/archive/master.zip)
+- Download and unzip the [plugin](https://github.com/pascaliske/pi-slider/archive/master.zip)
 
-- We include the latest version of jQuery (see [Google Developers](https://developers.google.com/speed/libraries/devguide#jquery) for cdn-version)
+- Include the latest version of jQuery (see [Google Developers](https://developers.google.com/speed/libraries/devguide#jquery) for cdn-version)
 
 - Include the CSS-Stylesheet file  and the JavaScript file of the pi-slider in the header of your HTML-file:
 ```html
@@ -15,7 +15,7 @@ The _pi-slider_ is a very simple image slider build with jQuery. It is easy to i
 <script type="text/javascript" src="pi-slider/pi-slider.min.js"></script>
 ```
 
-- We prepare a simple HTML element (such as a `div` tag) with an id `#sample`:
+- Prepare a simple HTML element (such as a `div` tag) with an id `#sample`:
 ```html
 <div id="slider">
 	<img src="image1.png" title="Caption here (optional)" data-href="Link here (optional)" />
@@ -23,7 +23,8 @@ The _pi-slider_ is a very simple image slider build with jQuery. It is easy to i
 	<img src="image3.png" title="Caption here (optional)" data-href="Link here (optional)" />
 </div>
 ```
->The _pi-slider_ include itself in the prepared `div` element. You also can style this element with your own css.
+>The _pi-slider_ include itself in the prepared `div` element.
+You also can chose other types of HTML tags such as `section`, `header`, etc and you can style this element with your own css.
 
 - Include the following Javascript and replace **#slider** with the id of the element you've prepared in the previous step. (This calls the main function of the slider)
 ```javascript
@@ -73,18 +74,18 @@ captions: true
 ```
 You have to copy the options into the JavaScript code from the last step of the [Installation](#installation). For every option write a new line
 ```javascript
-$(document).ready(function() {
-	$("#slider").piSlider({
-		option_name: value,
-		option_name: value,
-		option_name: value,
-		...
-	});
+...
+$("#slider").piSlider({
+	option_name: value,
+	option_name: value,
+	option_name: value,
+	...
 });
+...
 ```
 
 ## Contact
-If you have questions, suggestions or feature requests you can write a pull request or you can contact me with this **Email**: [info@pascal-iske.de](mailto:info@pascal-iske.de).
+If you have questions, suggestions or feature requests you can write a pull request to this repo or you can contact me with this **Email**: [info@pascal-iske.de](mailto:info@pascal-iske.de).
 
 ## License
 This jQuery plugin is made with lots of love and its free of charge so you can use it on your website. Please fork this repo for your own changes. In general I would like to see my name in the credits. Thank you!
