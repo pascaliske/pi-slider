@@ -5,14 +5,14 @@ The _pi-slider_ is a very simple image slider build with jQuery. It is easy to i
 
 ## Installation
 
-- First we download and unzip the [plugin]()
+- First we download and unzip the [plugin](https://github.com/pascaliske/pi-slider/archive/master.zip)
 
 - We include the latest version of jQuery (see [Google Developers](https://developers.google.com/speed/libraries/devguide#jquery) for cdn-version)
 
 - Include the CSS-Stylesheet file  and the JavaScript file of the pi-slider in the header of your HTML-file:
 ```html
-<link rel="stylesheet" type="text/css" href="pi-slider/pi-slider.css">
-<script type="text/javascript" src="pi-slider/pi-slider.js"></script>
+<link rel="stylesheet" type="text/css" href="pi-slider/pi-slider.min.css">
+<script type="text/javascript" src="pi-slider/pi-slider.min.js"></script>
 ```
 
 - We prepare a simple HTML element (such as a `div` tag) with an id `#sample`:
