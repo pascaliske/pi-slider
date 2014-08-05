@@ -75,7 +75,7 @@ arrows: true,
 // shows/hides captions {true, false}
 captions: true
 ```
-You have to copy the options into the JavaScript code from the last step of the [Installation](#installation). For every option write a new line
+You have to write (or copy) the options into the JavaScript code from the last step of the [Installation](#installation). For every option write a new line and **don't forget the comma** at the end of each line (except the last line).
 ```javascript
 ...
 $("#slider").piSlider({
