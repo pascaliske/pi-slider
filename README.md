@@ -1,11 +1,11 @@
 # pi-slider
 
-The _pi-slider_ is a very simple image slider build with jQuery. See the steps below for the installation. There are also several options to customize slider. See also my [Demo](http://dev.pascal-iske.de/demos/pi-slider/) of the slider.
+The _pi-slider_ is a very simple image slider built with jQuery. See the steps below for the installation. There are also several options to customize the slider. See also my [Demo](http://dev.pascal-iske.de/demos/pi-slider/) of the slider.
 
 
 ## Installation
 
-- Download and unzip the latest version of the [jQuery plugin](https://github.com/pascaliske/pi-slider/archive/master.zip)
+- Download and unzip the latest version of the [plugin](https://github.com/pascaliske/pi-slider/archive/master.zip)
 
 - Include the latest version of jQuery (see [Google Developers](https://developers.google.com/speed/libraries/devguide#jquery) for cdn-version)
 
@@ -23,8 +23,7 @@ The _pi-slider_ is a very simple image slider build with jQuery. See the steps b
 	<img src="image3.png" title="Caption here (optional)" data-href="Link here (optional)" />
 </div>
 ```
->The _pi-slider_ include itself in the prepared `div` element.
-You also can chose other types of HTML tags such as `section`, `header`, etc and you can style this element with your own css.
+>The _pi-slider_ includes itself in the prepared `div` element. Other types of HTML tags such as `section`, `header`, etc are also possible. You can style this element with your own css.
 
 - Include the following Javascript and replace **#slider** with the id of the element you've prepared in the previous step. (This calls the main function of the slider)
 ```javascript
@@ -36,13 +35,13 @@ $(document).ready(function() {
 ```
 >Don't forget the `<style>` tag around the Javascript code! ;)
 
-I recommend it to include this Javascript code at the bottom of the file just before the closing body tag because of performance reasons.
+I recommend to include this Javascript code at the bottom of the file just before the closing body tag because of performance reasons.
 
->When you're not sure if you made it all right look at my [Demo](http://dev.pascal-iske.de/demos/pi-slider/).
+>If you're not sure, look at my [Demo](http://dev.pascal-iske.de/demos/pi-slider/).
 
 ## Configuration
 
-The _pi-slider_ has several options to change its appearance and behavior. This options are listed below with a short description. Between the `{braces}` are the possible values for the options
+The _pi-slider_ has several options to change its appearance and behaviour. These options are listed below with a short description. Between the `{braces}` are the possible values for the options.
 ```javascript
 // displays a loading graphic before the slider fades in {true, false}
 loader: true, 
