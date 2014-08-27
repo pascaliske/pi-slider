@@ -33,7 +33,7 @@ $(document).ready(function() {
 	});
 });
 ```
->Don't forget the `<style>` tag around the Javascript code! ;)
+>Don't forget the `<script>` tag around the Javascript code! ;)
 
 I recommend to include this Javascript code at the bottom of the file just before the closing body tag because of performance reasons.
 
