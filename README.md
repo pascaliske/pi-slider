@@ -59,6 +59,8 @@ backwards: false,
 effect: 'fade',
 // duration of  each slide {time_in_ms}
 duration: '8000',
+// enables keystrokes for controlling the slider (left arrow, right arrow & space)
+keyControlling: true,
 // pause on hover {true, false}
 pauseOnHover: false,
 // displays a shadow below the slider {true, false}
