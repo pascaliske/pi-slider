@@ -352,6 +352,42 @@
 			}
 		});
 
+		// Controlling with keystrokes
+		if(settings.keyControlling) {
+			$(document).keyup(function(key) {
+				if (key.keyCode == 37) {
+					// left arrow pressed
+					key.preventDefault();
+					$(".left").click();
+				} else if (key.keyCode == 39) {
+					// right arrow pressed
+					key.preventDefault();
+					$(".right").click();
+				} else if (key.keyCode == 32) {
+					if(!e.hasClass('paused')) {
+						e.addClass('paused');
+						jQuery.queue($(".progressbar")[0], "fx", []);
+						$(".progressbar").stop();
+					} else if(e.hasClass('paused')) {
+						e.removeClass('paused');
+						$(".progressbar").delay(200).animate({
+							width: '100%'
+						},8000, function() {
+							$(".progressbar").delay(300).animate({
+								height: '0'
+							},200,function() {
+								$(".progressbar").removeAttr('style');
+								nextSlide();
+							});
+						});
+						jQuery.queue($(".progressbar")[0], "fx", function() {
+							jQuery.dequeue(this);
+						});
+					}
+				}
+			});
+		}
+
 		$(document).on('click', '.captionbar', function() {
 			alert("Open link!");
 			$(this).load();
@@ -372,6 +408,8 @@
 		effect: 'fade',
 		//duration of slides
 		duration: '8000',
+		//controlling with keystrokes
+		keyControlling: true,
 		//pause on hover
 		pauseOnHover: false,
 		//easing for animations of the slides
