@@ -15,7 +15,7 @@ The _pi-slider_ is a very simple image slider built with jQuery. See the steps b
 <script type="text/javascript" src="pi-slider/pi-slider.min.js"></script>
 ```
 
-- Prepare a simple HTML element (such as a `div` tag) with an id `#sample`:
+- Prepare a simple HTML element (such as a `div` tag) with an id `#slider`:
 ```html
 <div id="slider">
 	<img src="image1.png" title="Caption here (optional)" data-href="Link here (optional)" />
