@@ -5,6 +5,8 @@ The _pi-slider_ is a very simple image slider built with jQuery. See the steps b
 
 ## Installation
 
+### jQuery plugin
+
 - Download and unzip the latest version of the [plugin](https://github.com/pascaliske/pi-slider/archive/master.zip)
 
 - Include the latest version of jQuery (see [Google Developers](https://developers.google.com/speed/libraries/devguide#jquery) for cdn-version)
@@ -38,6 +40,8 @@ $(document).ready(function() {
 I recommend to include this Javascript code at the bottom of the file just before the closing body tag because of performance reasons.
 
 >If you're not sure, look at my [Demo](http://dev.pascal-iske.de/demos/pi-slider/).
+
+### WordPress plugin
 
 ## Configuration
 
