@@ -1,11 +1,11 @@
 # pi-slider
 
-*__Dev version__ (includes all .less and not minified .js files). Send me a pull request for any changes.*
-
 The _pi-slider_ is a very simple image slider built with jQuery. See the steps below for the installation. There are also several options to customize the slider. See also my [Demo](http://dev.pascal-iske.de/demos/pi-slider/) of the slider.
 
 
 ## Installation
+
+#### jQuery version:
 
 - Download and unzip the latest version of the [plugin](https://github.com/pascaliske/pi-slider/archive/master.zip)
 
@@ -17,7 +17,7 @@ The _pi-slider_ is a very simple image slider built with jQuery. See the steps b
 <script type="text/javascript" src="pi-slider/pi-slider.min.js"></script>
 ```
 
-- Prepare a simple HTML element (such as a `div` tag) with an id `#sample`:
+- Prepare a simple HTML element (such as a `div` tag) with an id `#slider`:
 ```html
 <div id="slider">
 	<img src="image1.png" title="Caption here (optional)" data-href="Link here (optional)" />
@@ -40,6 +40,8 @@ $(document).ready(function() {
 I recommend to include this Javascript code at the bottom of the file just before the closing body tag because of performance reasons.
 
 >If you're not sure, look at my [Demo](http://dev.pascal-iske.de/demos/pi-slider/).
+
+#### WordPress plugin:
 
 ## Configuration
 
