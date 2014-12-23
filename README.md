@@ -42,6 +42,7 @@ I recommend to include this Javascript code at the bottom of the file just befor
 >If you're not sure, look at my [Demo](http://dev.pascal-iske.de/demos/pi-slider/).
 
 #### WordPress plugin:
+>The WordPress plugin is just in work. I'm sorry... 
 
 ## Configuration
 
