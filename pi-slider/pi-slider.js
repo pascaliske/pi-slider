@@ -1,6 +1,6 @@
 /*
-	* piSlider v1.0.0
-	* http://www.pascal-iske.de/piSlider?lang=de
+	* piSlider v1.0.3
+	* http://pascal-iske.de/slider
 	*
 	* Copyright 2014: Pascal Iske
 */
@@ -28,15 +28,16 @@
 		var next_image = current_image+1;
 		var prev_image = current_image-1;
 
-		// FadeIn Slider
+		// fade in Slider
 		this.css({
-			'width': '1000px',
-			'height': '450px',
+			'width': settings.width,
+			'height': settings.height,
 			'position': 'relative',
-			'margin': '0 auto 150px'
+			'margin': '0 auto 150px',
+			'z-index': '100'
 		});
 
-		// Set slider to fullscreen mode
+		// set slider to fullscreen mode
 		if(settings.fullsize) {
 			settings.shadow = false;
 			this.css({
@@ -57,40 +58,65 @@
 			current_image = start_image;
 		}
 
-		// FadeIn->Out loader
-		if(settings.loader) {
-			this.prepend(loader);
-			$(".loader").fadeIn(800).delay(100).fadeOut(800, function() {
-				// Start slider and fade all in
-				startSlider(e);
-			});
-		} else {
+		// if autoplay then start here
+		if(settings.autoplay) {
 			startSlider(e);
 		}
 
 		// pause on hover
 		if(settings.pauseOnHover) {
 			this.hover(function() {
-				jQuery.queue($(".progressbar")[0], "fx", []);
-				$(".progressbar").stop();
+				pauseSlider();
 			}, function() {
-				$(".progressbar").delay(200).animate({
-					width: '100%'
-				},8000, function() {
-					$(".progressbar").delay(300).animate({
-						height: '0'
-					},200,function() {
-						$(".progressbar").removeAttr('style');
-						nextSlide();
-					});
-				});
-				jQuery.queue($(".progressbar")[0], "fx", function() {
-					jQuery.dequeue(this);
-				});
+				resumeSlider();
 			});
 		}
 
+		// triggers transition to previous image
+		$(document).on('click', '.left', function() {
+			prevSlide();
+		});
+
+		// triggers transition to next image
+		$(document).on('click', '.right', function() {
+			nextSlide();
+		});
+
+		// Controlling with keystrokes
+		if(settings.keyControlling) {
+			$(document).keyup(function(key) {
+				if (key.keyCode == 37) {
+					// left arrow pressed
+					key.preventDefault();
+					prevSlide();
+				} else if (key.keyCode == 39) {
+					// right arrow pressed
+					key.preventDefault();
+					nextSlide();
+				} else if (key.keyCode == 32) {
+					if(!e.hasClass('paused')) {
+						e.addClass('paused');
+						pauseSlider();
+					} else if(e.hasClass('paused')) {
+						e.removeClass('paused');
+						resumeSlider();
+					}
+				}
+			});
+		}
+
+		$(document).on('click', '.captionbar', function() {
+			alert("Open link!");
+			$(this).load();
+		});
+
 		function startSlider(e) {
+			// if loader then fade in -> out loader
+			if(settings.loader) {
+				e.prepend(loader);
+				$(".loader").fadeIn(800).delay(100).fadeOut(800);
+			}
+
 			// FadeIn first image
 			if(settings.startImage) {
 				$(".images, .images img:eq("+start_image+")").fadeIn('400');
@@ -134,19 +160,28 @@
 				$(".shadow").delay(200).fadeIn(500);
 			}
 
-			if(settings.autoplay) {
-				progressBar();
-			} else {
-				$(".captionbar").animate({
-					height: '55px'
-				}, 600, function() {
-					$(".captionbar span").fadeIn(400, function() {
-						$(".captionbar span").css({
-							'display': 'block'
-						});
-					});
+			progressBar();
+		}
+
+		function pauseSlider() {
+			jQuery.queue($(".progressbar")[0], "fx", []);
+			$(".progressbar").stop();
+		}
+
+		function resumeSlider() {
+			$(".progressbar").delay(200).animate({
+				width: '100%'
+			}, 8000, function() {
+				$(".progressbar").delay(300).animate({
+					height: '0'
+				},200,function() {
+					$(".progressbar").removeAttr('style');
+					nextSlide();
 				});
-			}
+			});
+			jQuery.queue($(".progressbar")[0], "fx", function() {
+				jQuery.dequeue(this);
+			});
 		}
 
 		function progressBar() {
@@ -200,19 +235,18 @@
 					});
 				}
 			});
-			if(settings.pauseOnHover) {
-				jQuery.queue($(".progressbar")[0], "fx", function() {
-					jQuery.dequeue(this);
-				});
+		}
+
+		// get caption for current_image
+		function getCaption(current_image) {
+			if($(".images img:eq("+current_image+")").attr('title')) {
+				return $(".images img:eq("+current_image+")").attr('title');
+			} else {
+				return '';
 			}
 		}
 
-		//get caption for current_image
-		function getCaption(current_image) {
-			return $(".images img:eq("+current_image+")").attr('title');
-		}
-
-		//get link for the current_image's caption
+		// get link for the current_image's caption
 		function getLink(current_image) {
 			if($(".images img:eq("+current_image+")").attr('data-href')) {
 				return $(".images img:eq("+current_image+")").attr('data-href');
@@ -249,86 +283,31 @@
 					left: '0'
 				});
 			}
-			if(settings.autoplay) {
-				progressBar();
-			}
+			progressBar();
 		}
 
-		// triggers transition to next image
+		// goto: next image
 		function nextSlide() {
-			$(".captionbar a span").remove();
-			if(current_image === last_image) {
-				next_image = first_image;
-				transition(current_image, next_image);
-				current_image = first_image;
-				next_image = next_image+1;
-				$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
-			} else {
-				next_image = current_image+1;
-				transition(current_image, next_image);
-				current_image = current_image+1;
-				next_image = next_image+1;
-				$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
-			}
-		}
-
-		// triggers transition to previous image
-		function prevSlide() {
-			$(".captionbar a span").remove();
-			if(current_image === 0) {
-				prev_image = last_image;
-				transition(current_image, prev_image);
-				current_image = last_image;
-				prev_image = prev_image-1;
-				$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
-			} else {
-				transition(current_image, prev_image);
-				current_image = current_image-1;
-				prev_image = prev_image-1;
-				$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
-			}
-		}
-
-		// Control Click Events
-		$(document).on('click', '.left', function() {
 			$(".progressbar").stop();
 			if(settings.captions) {
 				$(".captionbar span").fadeOut(400, function() {
 					$(".captionbar").animate({
 						height: '0'
 					}, 600,function() {
-						prevSlide();
-					});
-					$(".progressbar").animate({
-						height: '0'
-					}, 200, function(){
-						$(".progressbar").removeAttr('style').css({
-							'background-color': settings.progressColor,
-							'width': 0
-						});
-					});
-				});
-			} else {
-				$(".progressbar").animate({
-					height: '0'
-				}, 200, function(){
-					prevSlide();
-					$(".progressbar").removeAttr('style').css({
-						'background-color': settings.progressColor,
-						'width': 0
-					});
-				});
-			}
-		});
-
-		$(document).on('click', '.right', function() {
-			$(".progressbar").stop();
-			if(settings.captions) {
-				$(".captionbar span").fadeOut(400, function() {
-					$(".captionbar").animate({
-						height: '0'
-					}, 600,function() {
-						nextSlide();
+						$(".captionbar a span").remove();
+						if(current_image === last_image) {
+							next_image = first_image;
+							transition(current_image, next_image);
+							current_image = first_image;
+							next_image = next_image+1;
+							$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
+						} else {
+							next_image = current_image+1;
+							transition(current_image, next_image);
+							current_image = current_image+1;
+							next_image = next_image+1;
+							$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
+						}
 					});
 					$(".progressbar").animate({
 						height: '0'
@@ -343,55 +322,101 @@
 				$(".progressbar").animate({
 					height: '0'
 				}, 200, function() {
-					nextSlide();
+					$(".captionbar a span").remove();
+					if(current_image === last_image) {
+						next_image = first_image;
+						transition(current_image, next_image);
+						current_image = first_image;
+						next_image = next_image+1;
+						$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
+					} else {
+						next_image = current_image+1;
+						transition(current_image, next_image);
+						current_image = current_image+1;
+						next_image = next_image+1;
+						$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
+					}
 					$(".progressbar").removeAttr('style').css({
 						'background-color': settings.progressColor,
 						'width': 0
 					});
 				});
 			}
-		});
-
-		// Controlling with keystrokes
-		if(settings.keyControlling) {
-			$(document).keyup(function(key) {
-				if (key.keyCode == 37) {
-					// left arrow pressed
-					key.preventDefault();
-					$(".left").click();
-				} else if (key.keyCode == 39) {
-					// right arrow pressed
-					key.preventDefault();
-					$(".right").click();
-				} else if (key.keyCode == 32) {
-					if(!e.hasClass('paused')) {
-						e.addClass('paused');
-						jQuery.queue($(".progressbar")[0], "fx", []);
-						$(".progressbar").stop();
-					} else if(e.hasClass('paused')) {
-						e.removeClass('paused');
-						$(".progressbar").delay(200).animate({
-							width: '100%'
-						},8000, function() {
-							$(".progressbar").delay(300).animate({
-								height: '0'
-							},200,function() {
-								$(".progressbar").removeAttr('style');
-								nextSlide();
-							});
-						});
-						jQuery.queue($(".progressbar")[0], "fx", function() {
-							jQuery.dequeue(this);
-						});
-					}
-				}
-			});
 		}
 
-		$(document).on('click', '.captionbar', function() {
-			alert("Open link!");
-			$(this).load();
-		});
+		// goto: previous image
+		function prevSlide() {
+			$(".progressbar").stop();
+			if(settings.captions) {
+				$(".captionbar span").fadeOut(400, function() {
+					$(".captionbar").animate({
+						height: '0'
+					}, 600,function() {
+						$(".captionbar a span").remove();
+						if(current_image === 0) {
+							prev_image = last_image;
+							transition(current_image, prev_image);
+							current_image = last_image;
+							prev_image = prev_image-1;
+							$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
+						} else {
+							transition(current_image, prev_image);
+							current_image = current_image-1;
+							prev_image = prev_image-1;
+							$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
+						}
+					});
+					$(".progressbar").animate({
+						height: '0'
+					}, 200, function(){
+						$(".progressbar").removeAttr('style').css({
+							'background-color': settings.progressColor,
+							'width': 0
+						});
+					});
+				});
+			} else {
+				$(".progressbar").animate({
+					height: '0'
+				}, 200, function(){
+					$(".captionbar a span").remove();
+					if(current_image === 0) {
+						prev_image = last_image;
+						transition(current_image, prev_image);
+						current_image = last_image;
+						prev_image = prev_image-1;
+						$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
+					} else {
+						transition(current_image, prev_image);
+						current_image = current_image-1;
+						prev_image = prev_image-1;
+						$(".captionbar a").append("<span>"+getCaption(current_image)+"</span>");
+					}
+					$(".progressbar").removeAttr('style').css({
+						'background-color': settings.progressColor,
+						'width': 0
+					});
+				});
+			}
+		}
+
+		return {
+			start: function() {
+				startSlider(e);
+			},
+			pause: function() {
+				pauseSlider();
+			},
+			resume: function() {
+				resumeSlider();
+			},
+			nextSlide: function() {
+				nextSlide();
+			},
+			prevSlide: function() {
+				prevSlide();
+			}
+		}
 
 	};
 
@@ -429,6 +454,10 @@
 		//show/hide captions
 		captions: true,
 		//start image
-		startImage: 1
+		startImage: 1,
+		//slider width
+		width: '1000px',
+		//slider height
+		height: '450px'
 	};
 })(jQuery);
