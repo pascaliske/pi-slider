@@ -97,6 +97,7 @@ var slider = $("#slider").piSlider({
 You can call the following functions to control the plugin. (e.g. starting the slider through a click on a button if the autopay setting is disabled)
 
 - start the slider: `slider.start();`
+- stop the slider: `slider.stop();`
 - pause the sliders animation: `slider.pause();`
 - resume the sliders animation: `slider.resume();`
 - go to next image: `slider.next();`
