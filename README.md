@@ -42,6 +42,7 @@ I recommend to include this Javascript code at the bottom of the file just befor
 >If you're not sure, look at my [Demo](http://dev.pascal-iske.de/demos/pi-slider/).
 
 #### WordPress plugin:
+**The WordPress plugin is just in work. I'm sorry...**
 
 ## Configuration
 
@@ -83,13 +84,21 @@ captions: true
 You have to write (or copy) the options into the JavaScript code from the last step of the [Installation](#installation). For every option write a new line and **don't forget the comma** at the end of each line (except the last line).
 ```javascript
 ...
-$("#slider").piSlider({
+var slider = $("#slider").piSlider({
 	option_name: value,
 	option_name: value,
 	option_name: value,
 	...
 });
 ...
+```
+
+## Usage
+You can call the following functions to control the plugin. (e.g. starting the slider through a simple click on a button)
+
+- start the slider
+```javascript
+slider.start();
 ```
 
 ## Contact
