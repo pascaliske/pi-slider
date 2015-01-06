@@ -30,7 +30,7 @@ The _pi-slider_ is a very simple image slider built with jQuery. See the steps b
 - Include the following Javascript and replace **#slider** with the id of the element you've prepared in the previous step. (This calls the main function of the slider)
 ```javascript
 $(document).ready(function() {
-	$("#slider").piSlider({
+	var slider = $("#slider").piSlider({
 		progressColor: '#f0f0f0'
 	});
 });
@@ -84,7 +84,7 @@ captions: true
 You have to write (or copy) the options into the JavaScript code from the last step of the [Installation](#installation). For every option write a new line and **don't forget the comma** at the end of each line (except the last line).
 ```javascript
 ...
-$("#slider").piSlider({
+var slider = $("#slider").piSlider({
 	option_name: value,
 	option_name: value,
 	option_name: value,
@@ -92,6 +92,15 @@ $("#slider").piSlider({
 });
 ...
 ```
+
+## Usage
+You can call the following functions to control the plugin. (e.g. starting the slider through a click on a button if the autopay setting is disabled)
+
+- start the slider: `slider.start();`
+- pause the sliders animation: `slider.pause();`
+- resume the sliders animation: `slider.resume();`
+- go to next image: `slider.next();`
+- go to previous image: `slider.prev();`
 
 ## Contact
 If you have questions, suggestions or feature requests you can write a pull request to this repo or you can contact me with this **Email**: [info@pascal-iske.de](mailto:info@pascal-iske.de).
