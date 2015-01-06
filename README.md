@@ -94,7 +94,7 @@ var slider = $("#slider").piSlider({
 ```
 
 ## Usage
-You can call the following functions to control the plugin. (e.g. starting the slider through a simple click on a button)
+You can call the following functions to control the plugin. (e.g. starting the slider through a click on a button if the autopay setting is disabled)
 
 - start the slider: `slider.start();`
 - pause the sliders animation: `slider.pause();`
