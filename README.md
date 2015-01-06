@@ -79,7 +79,15 @@ progressPosition: 'bottom',
 // shows/hides control arrows {true, false}
 arrows: true,
 // shows/hides captions {true, false}
-captions: true
+captions: true,
+// shows/hides pagination items
+pagination: true,
+// defines start image
+startImage: 1,
+// defines slider width
+width: '100%',
+// defines slider height
+height: '300px'
 ```
 You have to write (or copy) the options into the JavaScript code from the last step of the [Installation](#installation). For every option write a new line and **don't forget the comma** at the end of each line (except the last line).
 ```javascript
