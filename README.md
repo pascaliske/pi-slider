@@ -110,9 +110,10 @@ You can call the following functions to control the plugin. (e.g. starting the s
 - resume the sliders animation: `slider.resume();`
 - go to next image: `slider.next();`
 - go to previous image: `slider.prev();`
+- go to specific image: `slider.goto(2);`
 
 ## Contact
-If you have questions, suggestions or feature requests you can write a pull request to this repo or you can contact me with this **Email**: [info@pascal-iske.de](mailto:info@pascal-iske.de).
+If you have questions, suggestions or feature requests you can write a pull request to this repo or you can contact me with this **Email**: [info@pascal-iske.de](mailto:info@pascal-iske.de?subject=pi-slider@github:).
 
 ## License
 This jQuery plugin is made with lots of love and its free of charge so you can use it on your website. Please fork this repo for your own changes. In general I would like to see my name in the credits. Thank you!
