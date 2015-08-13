@@ -2,14 +2,7 @@
     "folders":
     [
         {
-            "path": "/"
+            "path": "./"
         }
-    ],
-    "settings":
-    {
-        "less2css":
-        {
-            "minName": true
-        }
-    }
+    ]
 }
